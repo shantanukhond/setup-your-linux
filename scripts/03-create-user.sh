@@ -25,10 +25,11 @@ chmod 440 "/etc/sudoers.d/$USERNAME"
 
 if command -v zsh >/dev/null; then
   chsh -s "$(command -v zsh)" "$USERNAME"
-  if [ -d "/home/$USERNAME/.oh-my-zsh" ]; then
-    echo "Oh My Zsh already installed for $USERNAME."
-  else
+  if [ ! -d "/home/$USERNAME/.oh-my-zsh" ]; then
     sudo -u "$USERNAME" -H sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  fi
+  if [ -d "/home/$USERNAME/.oh-my-zsh" ]; then
+    sudo -u "$USERNAME" cp "/home/$USERNAME/.oh-my-zsh/templates/zshrc.zsh-template" "/home/$USERNAME/.zshrc"
   fi
 fi
 
