@@ -25,7 +25,11 @@ chmod 440 "/etc/sudoers.d/$USERNAME"
 
 if command -v zsh >/dev/null; then
   chsh -s "$(command -v zsh)" "$USERNAME"
-  sudo -u "$USERNAME" -H sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  if [ -d "/home/$USERNAME/.oh-my-zsh" ]; then
+    echo "Oh My Zsh already installed for $USERNAME."
+  else
+    sudo -u "$USERNAME" -H sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  fi
 fi
 
 read -r -p "Paste SSH public key: " SSH_KEY

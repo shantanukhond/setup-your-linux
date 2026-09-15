@@ -9,6 +9,10 @@ fi
 
 apt-get install -y zsh git
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+if [ -d "$HOME/.oh-my-zsh" ]; then
+  echo "Oh My Zsh already installed."
+else
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
 
 echo "zsh and Oh My Zsh installed."
