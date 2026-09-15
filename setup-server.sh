@@ -16,6 +16,7 @@ echo "  3. create sudo user + SSH key"
 echo "  4. change SSH port"
 echo "  5. enable firewall"
 echo "  6. install docker"
+echo "  7. generate server SSH key"
 echo
 
 ./scripts/01-update-upgrade.sh
@@ -24,6 +25,7 @@ echo
 ./scripts/04-change-ssh-port.sh
 ./scripts/05-enable-firewall.sh
 ./scripts/06-install-docker.sh
+./scripts/07-generate-ssh-key.sh
 
 echo
 echo "Done. Stay on this session until you can log in on the new SSH port."
